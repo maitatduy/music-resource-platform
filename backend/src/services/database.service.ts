@@ -1,4 +1,5 @@
-import { MongoClient, Db } from "mongodb";
+import { MongoClient, Db, Collection } from "mongodb";
+import {User} from "~/models/schemas/User.schema";
 
 const uri = process.env.MONGODB_URI as string;
 
@@ -24,6 +25,10 @@ class DatabaseService {
             console.log(error);
             throw error;
         }
+    }
+
+    get users(): Collection<User> {
+        return this.db.collection("users");
     }
 }
 
