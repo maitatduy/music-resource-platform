@@ -15,7 +15,7 @@ export const registerValidator = checkSchema({
                 min: 2,
                 max: 50,
             },
-            errorMessage: "Họ và tên có khoảng từ 2 đến 50 ký tự",
+            errorMessage: "Họ và tên có khoảng từ 2 đến 50 ký tự!",
         },
     },
 
@@ -25,7 +25,7 @@ export const registerValidator = checkSchema({
         },
 
         isString: {
-            errorMessage: "Tên người dùng phải là một chuỗi",
+            errorMessage: "Tên người dùng phải là một chuỗi!",
         },
 
         trim: true,
@@ -102,5 +102,51 @@ export const registerValidator = checkSchema({
 
     avatar_path: {
         optional: true,
+    },
+});
+
+export const loginValidator = checkSchema({
+    username: {
+        notEmpty: {
+            errorMessage: "Tên người dùng là bắt buộc!",
+        },
+
+        isString: {
+            errorMessage: "Tên người dùng phải là một chuỗi!",
+        },
+
+        trim: true,
+
+        isLength: {
+            options: {
+                min: 4,
+                max: 30,
+            },
+            errorMessage: "Tên người dùng có khoảng 4 đến 30 ký tự!",
+        },
+
+        matches: {
+            options: /^[a-zA-Z0-9_]+$/,
+            errorMessage: "Tên người dùng có thể chứa chữ cái, chữ số và dấu gạch dưới!",
+        },
+    },
+
+    password: {
+        notEmpty: {
+            errorMessage: "Mật khẩu không được để trống!",
+        },
+
+        isLength: {
+            options: {
+                min: 6,
+                max: 50,
+            },
+            errorMessage: "Mật khẩu có khoảng từ 6 đến 50 ký tự!",
+        },
+
+        matches: {
+            options: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/,
+            errorMessage: "Mật khẩu chỉ chứa chữ cái viết hoa, viết thường và chữ số!",
+        },
     },
 });

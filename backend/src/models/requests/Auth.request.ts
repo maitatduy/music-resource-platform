@@ -8,3 +8,8 @@ export interface RegisterReqBody {
 
     password: string;
 }
+
+export interface LoginReqBody {
+    username: string;
+    password: string;
+}

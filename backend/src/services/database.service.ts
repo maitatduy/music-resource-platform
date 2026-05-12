@@ -1,5 +1,5 @@
 import { MongoClient, Db, Collection } from "mongodb";
-import {User} from "~/models/schemas/User.schema";
+import { User } from "~/models/schemas/User.schema";
 
 const uri = process.env.MONGODB_URI as string;
 
